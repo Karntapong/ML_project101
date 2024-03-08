@@ -28,6 +28,7 @@ class DataTransformation:
     def initiate_data_transformation(self,data_path):
         try:
             df = pd.read_csv(data_path)
+            logging.info('Read csv already')
             num_features = df.select_dtypes(exclude='object').columns
             df_model = df.copy()
             df_model['average_score'] = df[num_features].sum(axis=1)/len(num_features)
@@ -48,7 +49,7 @@ class DataTransformation:
 
             # Fit and transform the data
             X_encoded = preprocessor.fit_transform(X)
-
+            logging.info('Encoded categorical variable already')
             # Fit the OneHotEncoder
             oh_transformer.fit(X[cat_features])
 
@@ -57,10 +58,10 @@ class DataTransformation:
 
             # Combine column names of one-hot encoded and numerical features
             final_column_names = list(encoded_column_names) + list(X.select_dtypes(exclude="object").columns)
-
+            logging.info('Getting columns name by use value of categorical')
             # Convert the transformed array to a DataFrame with column names
             X_encoded_df = pd.DataFrame(X_encoded, columns=final_column_names)
-
+            logging.info('Get dataframe for train_test_split ')
             X_train, X_test, y_train, y_test = train_test_split(X_encoded_df,y,test_size=0.2,random_state=42)
             logging.info('Tranform completed')
             return (
