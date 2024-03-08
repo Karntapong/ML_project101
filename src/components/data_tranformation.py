@@ -22,7 +22,7 @@ class DataTransformationconfig:
 
 class DataTransformation:
     def __init__(self):
-        self.data_tranformation_config == DataTransformationconfig()
+        self.data_transformation_config = DataTransformationconfig()
 
 
     def initiate_data_transformation(self,data_path):
@@ -62,8 +62,13 @@ class DataTransformation:
             X_encoded_df = pd.DataFrame(X_encoded, columns=final_column_names)
 
             X_train, X_test, y_train, y_test = train_test_split(X_encoded_df,y,test_size=0.2,random_state=42)
-
-            return X_train,X_test,y_train,y_test
+            logging.info('Tranform completed')
+            return (
+                X_train,
+                X_test,
+                y_train,
+                y_test
+                )
 
         except Exception as e:
             raise CustomException(e,sys)
