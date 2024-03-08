@@ -34,11 +34,11 @@ class ModelTrainer:
             if model_name == "Random Forest":
                 model = RandomForestRegressor(
                     n_estimators=trial.suggest_int("rf_n_estimators", 8, 256),
-                    criterion='squared_error'  # Modify as needed
+                    criterion='squared_error' 
                 )
             elif model_name == "Decision Tree":
                 model = DecisionTreeRegressor(
-                    criterion='squared_error',  # Change to one of the allowed options
+                    criterion='squared_error', 
                     splitter=trial.suggest_categorical("dt_splitter", ['best', 'random'])
                 )
             elif model_name == "Gradient Boosting":
@@ -46,7 +46,7 @@ class ModelTrainer:
                     learning_rate=trial.suggest_float("gb_learning_rate", 0.001, 0.1),
                     n_estimators=trial.suggest_int("gb_n_estimators", 8, 256),
                     subsample=trial.suggest_float("gb_subsample", 0.6, 0.9),
-                    criterion='friedman_mse'  # Modify as needed
+                    criterion='friedman_mse' 
                 )
             elif model_name == "Linear Regression":
                 model = LinearRegression()
