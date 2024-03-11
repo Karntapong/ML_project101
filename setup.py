@@ -1,7 +1,8 @@
-from setuptools import find_packages,setup
+from setuptools import find_packages, setup
 from typing import List
 
 HYPEN_E_DOT = '-e .'
+
 def get_requirements(file_path: str) -> List[str]:
     """
     This function reads the requirements from a file and returns them as a list.
@@ -13,11 +14,13 @@ def get_requirements(file_path: str) -> List[str]:
             if requirement and not requirement.startswith("#"):  # Ignore empty lines and comments
                 requirements.append(requirement)
     return requirements
+
 setup(
-name = 'ML_project',
-version = '0.0.1',
-author= 'Karntapong',
-author_email='bladesephiroth01@gmail.com',
-packages=find_packages(),
-install_requires =get_requirements('requirements.txt')
+    name='ML_project',
+    version='0.0.1',
+    author='Karntapong',
+    author_email='bladesephiroth01@gmail.com',
+    packages=find_packages(),  # Automatically find all packages under the current directory
+    install_requires=get_requirements('requirements.txt'),
+    include_package_data=True,  # Include non-Python files specified in MANIFEST.in
 )

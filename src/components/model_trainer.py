@@ -76,7 +76,7 @@ class ModelTrainer:
 
         # Set up the Optuna study and optimize the objective function
         study = optuna.create_study(direction="minimize")  # minimize MSE
-        study.optimize(objective, n_trials=20)
+        study.optimize(objective, n_trials=10)
 
         # Instantiate the best model based on the Optuna results
         best_model_name = study.best_trial.params["model_name"]

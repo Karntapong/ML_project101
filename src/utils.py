@@ -21,3 +21,18 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file:
+            loaded_object = pickle.load(file)
+        return loaded_object
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File '{file_path}' not found.")
+    
+def plus(self):
+    a = 1+2
+    return a
+def minus(x):
+    x-1
+    return x
