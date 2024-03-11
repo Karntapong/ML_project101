@@ -1,7 +1,5 @@
 import os 
 import sys
-from src.utils import plus
-from src.utils import minus
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd

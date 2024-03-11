@@ -8,7 +8,16 @@ from src.utils import load_object
 class Predictor:
     def __init__(self):
         pass
-
+    def predict(self, X):
+        try:
+            model_path = os.path.join('artifacts', 'model.pkl')
+            self.model = load_object(model_path)
+            predictions = self.model.predict(X)
+            logging.info('Predictions made successfully')
+            return predictions
+        except Exception as e:
+            logging.error(f"Error occurred during prediction: {str(e)}")
+            raise CustomException("Error occurred during prediction")
 
 # Example usage:
 # predictor = Predictor()
