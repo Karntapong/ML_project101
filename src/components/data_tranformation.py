@@ -64,6 +64,10 @@ class DataTransformation:
             logging.info('Get dataframe for train_test_split ')
             X_train, X_test, y_train, y_test = train_test_split(X_encoded_df,y,test_size=0.2,random_state=42)
             logging.info('Tranform completed')
+            save_object(
+                file_path= self.data_transformation_config.preprocessor_obj_file_path,
+                obj = X_encoded_df
+            )
             return (
                 X_train,
                 X_test,

@@ -97,5 +97,9 @@ class ModelTrainer:
 
         # Train the best model on the entire training set
         best_model.fit(X_train, y_train)
+        save_object(
+            file_path= ModelTrainerConfig.train_model_path,
+            obj= best_model
+        )
         logging.info('Find best model completed')
         return best_model
